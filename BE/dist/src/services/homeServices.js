@@ -29,6 +29,22 @@ class HomeService {
                 return this.homeRepository.delete({ id: id });
             }
         };
+        this.findById = async (id) => {
+            let home = await this.homeRepository.findOneBy({ id: id });
+            if (!home) {
+                return null;
+            }
+            else {
+                return home;
+            }
+        };
+        this.findByUsername = async (username) => {
+            let home = await this.homeRepository.findOneBy({ username: username });
+            if (!home) {
+                return null;
+            }
+            return home;
+        };
         this.homeRepository = data_source_1.AppDataSource.getRepository(home_1.Home);
     }
 }

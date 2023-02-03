@@ -10,7 +10,6 @@ HomeRouter.get('/',homeController.getAll);
 HomeRouter.post('/',homeController.create);
 HomeRouter.put('/:id',homeController.update);
 HomeRouter.delete('/:id',homeController.delete);
-// HomeRouter.get('/:id',homeController.findById);
-//
+HomeRouter.get('/:id',homeController.findById);
 
 
