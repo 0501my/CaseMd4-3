@@ -1,4 +1,4 @@
-import {Request, Respone} from 'express';
+import {Request, Response} from 'express';
 import categoryServices from "../services/categoryServices";
 
 class CategoryController {
@@ -8,7 +8,7 @@ class CategoryController {
         this.categoryServices = categoryServices;
     }
 
-    getAll = async (req: Request, res: Respone) => {
+    getAll = async (req: Request, res: Response) => {
         try {
             let category = await categoryServices.getAll()
             res.status(200).json(category)

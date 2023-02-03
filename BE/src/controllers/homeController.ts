@@ -23,7 +23,6 @@ class HomeController {
             let newHome = await homeServices.save(req.body)
             res.status(200).json(newHome);
         } catch (e) {
-            console.log(e.message)
             res.status(500).json(e.message)
         }
     }
