@@ -15,22 +15,33 @@ class HomeService {
         return home;
     }
 
-    save = async (product) => {
-        return this.homeRepository.save(product);
+    save = async (home) => {
+        return this.homeRepository.save(home);
     }
+
+
+    update = async (id,newHome) => {
+        let home = await this.homeRepository.findOneBy({id: id});
+        if (!home) {
+            return null;
+        }
+        newHome.id = id;
+        return this.homeRepository.update({id: id}, newHome);
+
+    }
+
+    private delete= async (id) => {
+        let home = await this.homeRepository.findOneBy({id: id});
+        if (!home){
+            return null;
+        }else {
+            return this.homeRepository.delete({id: id});
+        }
+    }
+
 
 }
 
-
-//
-//     private update = async (id,newHome) => {
-//         let home = await this.homeRepository.findOneBy({id: id});
-//         if (!home) {
-//             return null;
-//         }
-//         newHome.id = id;
-//         return this.homeRepository.update({id: id}, newHome);
-//     }
 //     // Tìm bằng ID
 //     private findByID = async (id) => {
 //         let home = await this.homeRepository.findOneBy({id: id});  //findOne là tìm ra một thằng
@@ -41,14 +52,7 @@ class HomeService {
 //         }
 //     }
 //
-//     private delete= async (id) => {
-//         let home = await this.homeRepository.findOneBy({id: id});  //findOne là tìm ra một thằng
-//         if (!home){
-//             return null;
-//         }else {
-//             return this.homeRepository.delete({id: id});
-//         }
-//     }
+
 //
 //     findByName = async (search)=>{
 //         let sql = `select p.id, p.name, p.price, p.image, c.idCategory, c.name as nameCategory from home p join category c on p.category = c.id where p.name like '%${search}%'`

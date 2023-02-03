@@ -27,17 +27,29 @@ class HomeController {
         }
     }
 
-    // update = async (req: Request, res: Response) => {
-    //     try {
-    //         let id = req.params.id;
-    //         let editHome = await this.homeServices.update(id, req.body)
-    //         res.status(200).json({ok: editHome, message: 'thanh cong'})
-    //     } catch (e) {
-    //         res.status(500).json(e.message)
-    //     }
-    // }
+    update = async (req: Request, res: Response) => {
+        try {
+            let id = req.params.id;
+            let home = {
+                name: req.body.name,
+                price : req.body.price,
+                image : req.body.image,
+                idUser : req.body.idUser,
+                idCategory: req.body.idCategory
+            }
+            let editHome = await this.homeServices.update(id, home)
+            res.status(200).json({ok: editHome, message: 'thanh cong'})
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
 
+    delete = async (req: Request, res: Response) => {
+        let id = req.params.id;
+        await this.homeServices.delete(id);
+        res.status(200).json('Success!')
 
+    }
 
 }
 
@@ -47,15 +59,7 @@ class HomeController {
 
 
 
-//     remove = async (req: Request, res: Response) => {
-//         try {
-//             let id = req.params.id;
-//             let removeHome = await this.homeServices.remove(id)
-//             res.status(200).json({ok: removeHome, message: 'xoa roi'})
-//         } catch (e) {
-//             res.status(500).json(e.message)
-//         }
-//     }
+
 //     findById = async (req: Request, res: Response) => {
 //         let id = req.params.id
 //         let findById = await this.homeServices.findById(id);
