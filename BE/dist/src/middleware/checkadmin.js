@@ -10,4 +10,4 @@ const checkAdmin = (req, res, next) => {
     }
 };
 exports.checkAdmin = checkAdmin;
-//# sourceMappingURL=checkAdmin.js.map
+//# sourceMappingURL=checkadmin.js.map

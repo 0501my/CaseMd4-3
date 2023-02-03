@@ -3,7 +3,7 @@ export declare class Order {
     idHome: number;
     idUser: number;
     totalPrice: number;
-    startTime: number;
-    endTime: number;
+    startTime: string;
+    endTime: string;
     status: string;
 }
