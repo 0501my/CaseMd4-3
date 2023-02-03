@@ -1,1 +1,1 @@
-declare const h = 1;
+export declare const router: import("express-serve-static-core").Router;
