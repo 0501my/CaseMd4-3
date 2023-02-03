@@ -6,7 +6,7 @@ declare class UserService {
         idUser: any;
         username: any;
         role: any;
-        token: any;
+        token: string;
     }>;
     register: (user: any) => Promise<any>;
 }
