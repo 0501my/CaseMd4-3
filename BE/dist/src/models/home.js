@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Home.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ default: 1 }),
     __metadata("design:type", Number)
 ], Home.prototype, "idUser", void 0);
 __decorate([
