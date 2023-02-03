@@ -15,6 +15,15 @@ class HomeController {
                 res.status(500).json(e.message);
             }
         };
+        this.create = async (req, res) => {
+            try {
+                let newHome = await homeServices_1.default.save(req.body);
+                res.status(200).json(newHome);
+            }
+            catch (e) {
+                res.status(500).json(e.message);
+            }
+        };
         this.homeServices = homeServices_1.default;
     }
 }

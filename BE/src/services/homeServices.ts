@@ -10,15 +10,18 @@ class HomeService {
     }
 
     getAll = async () => {
-        let sql = 'select p.id, p.name, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id'
+        let sql = 'select u.username,p.id, p.name, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id join user u on p.idUser =  u.id '
         let home = await this.homeRepository.query(sql);
         return home;
     }
+
+    save = async (product) => {
+        return this.homeRepository.save(product);
+    }
+
 }
-//
-//     save = async (product) => {      // product này vẫn chưa có id
-//         return this.homeRepository.save(product); //khởi tạo đã có id
-//     }
+
+
 //
 //     private update = async (id,newHome) => {
 //         let home = await this.homeRepository.findOneBy({id: id});
