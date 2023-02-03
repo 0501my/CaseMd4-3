@@ -24,6 +24,28 @@ class HomeController {
                 res.status(500).json(e.message);
             }
         };
+        this.update = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let home = {
+                    name: req.body.name,
+                    price: req.body.price,
+                    image: req.body.image,
+                    idUser: req.body.idUser,
+                    idCategory: req.body.idCategory
+                };
+                let editHome = await this.homeServices.update(id, home);
+                res.status(200).json({ ok: editHome, message: 'thanh cong' });
+            }
+            catch (e) {
+                res.status(500).json(e.message);
+            }
+        };
+        this.delete = async (req, res) => {
+            let id = req.params.id;
+            await this.homeServices.delete(id);
+            res.status(200).json('Success!');
+        };
         this.homeServices = homeServices_1.default;
     }
 }

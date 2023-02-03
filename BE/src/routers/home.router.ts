@@ -7,9 +7,9 @@ export const HomeRouter = Router();
 
 HomeRouter.use(auth);
 HomeRouter.get('/',homeController.getAll);
-HomeRouter.post('/',checkAdmin,homeController.create);
-// HomeRouter.put('/:id',checkAdmin,homeController.update);
-// HomeRouter.delete('/:id',checkAdmin,homeController.remove);
+HomeRouter.post('/',homeController.create);
+HomeRouter.put('/:id',homeController.update);
+HomeRouter.delete('/:id',homeController.delete);
 // HomeRouter.get('/:id',homeController.findById);
 //
 

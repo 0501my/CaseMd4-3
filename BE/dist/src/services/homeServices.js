@@ -9,8 +9,25 @@ class HomeService {
             let home = await this.homeRepository.query(sql);
             return home;
         };
-        this.save = async (product) => {
-            return this.homeRepository.save(product);
+        this.save = async (home) => {
+            return this.homeRepository.save(home);
+        };
+        this.update = async (id, newHome) => {
+            let home = await this.homeRepository.findOneBy({ id: id });
+            if (!home) {
+                return null;
+            }
+            newHome.id = id;
+            return this.homeRepository.update({ id: id }, newHome);
+        };
+        this.delete = async (id) => {
+            let home = await this.homeRepository.findOneBy({ id: id });
+            if (!home) {
+                return null;
+            }
+            else {
+                return this.homeRepository.delete({ id: id });
+            }
         };
         this.homeRepository = data_source_1.AppDataSource.getRepository(home_1.Home);
     }
