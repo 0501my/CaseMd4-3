@@ -30,12 +30,12 @@ __decorate([
     __metadata("design:type", Number)
 ], Order.prototype, "totalPrice", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "datetime" }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], Order.prototype, "startTime", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "datetime" }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], Order.prototype, "endTime", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
