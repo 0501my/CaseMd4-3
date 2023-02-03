@@ -18,29 +18,35 @@ class HomeController {
         }
 
     }
-}
-//
+    create = async (req: Request, res: Response) => {
+        try {
+            let newHome = await homeServices.save(req.body)
+            res.status(200).json(newHome);
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
 
-//
-//
-//     }
-//     create = async (req: Request, res: Response) => {
-//         try {
-//             let newHome = await homeServices.save(req.body)
-//             res.status(200).json(newHome);
-//         } catch (e) {
-//             res.status(500).json(e.message)
-//         }
-//     }
-//     update = async (req: Request, res: Response) => {
-//         try {
-//             let id = req.params.id;
-//             let editHome = await this.homeServices.update(id, req.body)
-//             res.status(200).json({ok: editHome, message: 'thanh cong'})
-//         } catch (e) {
-//             res.status(500).json(e.message)
-//         }
-//     }
+    // update = async (req: Request, res: Response) => {
+    //     try {
+    //         let id = req.params.id;
+    //         let editHome = await this.homeServices.update(id, req.body)
+    //         res.status(200).json({ok: editHome, message: 'thanh cong'})
+    //     } catch (e) {
+    //         res.status(500).json(e.message)
+    //     }
+    // }
+
+
+
+}
+
+
+
+
+
+
+
 //     remove = async (req: Request, res: Response) => {
 //         try {
 //             let id = req.params.id;
