@@ -115,7 +115,6 @@ function getCategoriesCreate() {
                 Authorization: 'Bearer ' + token.token
             },
             success: (categories) => {
-                console.log(categories)
                 let Categories = ``;
                 for (const category of categories) {
                     Categories += `

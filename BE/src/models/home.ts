@@ -11,7 +11,7 @@ export class Home{
     image : string;
     @Column({type : "int"})
     price : number;
-    @Column()
+    @Column({default : 1})
     idUser : number;
     @Column()
     idCategory : number;

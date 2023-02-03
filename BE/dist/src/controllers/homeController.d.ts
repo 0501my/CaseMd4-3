@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 declare class HomeController {
     private homeServices;
     constructor();
