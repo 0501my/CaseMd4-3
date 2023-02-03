@@ -48,7 +48,7 @@ function Edit(id){
         }
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:3000/home',
+            url: `http://localhost:3000/home/${id}`,
             data: JSON.stringify(home),
             headers: {
                 'Content-Type': 'application/json',
