@@ -42,9 +42,6 @@ class UserService {
                 }
             }
         };
-        this.save = async (user) => {
-            return this.userRepository.save(user);
-        };
         this.register = async (user) => {
             let userCheck = await this.userRepository.findOneBy({ username: user.username });
             if (!userCheck) {

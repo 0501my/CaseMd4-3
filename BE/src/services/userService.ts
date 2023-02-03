@@ -44,9 +44,7 @@ class UserService {
 
     }
 
-    save = async (user) => {      // product này vẫn chưa có id
-        return this.userRepository.save(user); //khởi tạo đã có id
-    }
+
 
 
     register = async (user) =>{

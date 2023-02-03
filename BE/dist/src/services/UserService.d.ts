@@ -8,7 +8,6 @@ declare class UserService {
         role: any;
         token: string;
     }>;
-    save: (user: any) => Promise<any>;
     register: (user: any) => Promise<any>;
 }
 declare const _default: UserService;

@@ -1,11 +1,7 @@
-declare class HomeServices {
+declare class HomeService {
     private homeRepository;
     constructor();
     getAll: () => Promise<any>;
-    save: (home: any) => Promise<any>;
-    private update;
-    private findById;
-    private remove;
 }
-declare const _default: HomeServices;
+declare const _default: HomeService;
 export default _default;

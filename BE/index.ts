@@ -1,25 +1,25 @@
 import express from 'express';
-// import {router} from "./src/routes/router";
-const app = express();
-import session from 'express-session'
+import {router} from "./src/routers/router";
 import bodyParser from "body-parser";
-import cors from "cors";
+import session from "express-session";
 import {AppDataSource} from "./src/data-source";
-AppDataSource.initialize().then(()=>{
-    console.log('DB connect')
-}).catch(err=>{
-    console.log('Connect Err', err.message)
+import cors from 'cors';
+
+const app = express();
+AppDataSource.initialize().then(() => {
+    console.log('Connect database success')
 })
+app.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('./public'));
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: 'Dai',
-    cookie: { maxAge: 60000 }}));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(cors())
-// app.use('', router);
-app.listen(3000,()=>{
-    console.log('server is running http://localhost:3000/home')
-})
+    secret: 'somesecret',
+    cookie: { maxAge: 100000 }}));
+app.use('', router);
 
+app.listen(3000, () => {
+    console.log('Server is running at http://localhost:3000/home')
+})
