@@ -1,15 +1,15 @@
 function showFormAdd() {
     $('#body').html(`
 <input type="text" placeholder="name" id="name">
-<input type="file" placeholder="image" id="fileButton" onchange="uploadImage(event) name = "image">
- <div id="imgDiv"></div>
+<input type="file" id="fileButton" onchange="uploadImage(event)">
+<div id="imgDiv"></div>
 <input type="text" placeholder="price" id="price">
 <input type="text" placeholder="idUser" id="idUser">
 <select name="type" required id="categoryAdd">
 <option selected>Category</option>
 </select>
-<button type="submit" onclick="Add()">Add</button>
-`)
+<button type="submit" onclick="Add()">Add</button>`)
+    getCategoriesCreate()
 }
 function Add() {
     let token = localStorage.getItem('token');
@@ -27,7 +27,6 @@ function Add() {
             idUser: idUser,
             category: category
         }
-
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/home',
@@ -40,5 +39,7 @@ function Add() {
                 showHome()
             }
         })
+
     }
 }
+
