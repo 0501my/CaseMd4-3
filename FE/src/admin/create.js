@@ -11,7 +11,6 @@ function showFormAdd() {
 <button type="submit" onclick="Add()">Add</button>
 `)
 }
-
 function Add() {
     let token = localStorage.getItem('token');
     if (token) {
