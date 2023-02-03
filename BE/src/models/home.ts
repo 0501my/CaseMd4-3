@@ -13,7 +13,7 @@ export class Home{
     price : number;
     @Column({default : 1})
     idUser : number;
-    @Column()
+    @Column({type : "int" , default : 1})
     idCategory : number;
 
 }

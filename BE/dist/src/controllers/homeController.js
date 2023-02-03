@@ -46,6 +46,11 @@ class HomeController {
             await this.homeServices.delete(id);
             res.status(200).json('Success!');
         };
+        this.findById = async (req, res) => {
+            let id = req.params.id;
+            let findById = await this.homeServices.findById(id);
+            await res.status(200).json(findById);
+        };
         this.homeServices = homeServices_1.default;
     }
 }

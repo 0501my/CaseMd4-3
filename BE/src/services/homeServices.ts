@@ -40,38 +40,38 @@ class HomeService {
     }
 
 
-}
+
 
 //     // Tìm bằng ID
-//     private findByID = async (id) => {
-//         let home = await this.homeRepository.findOneBy({id: id});  //findOne là tìm ra một thằng
-//         if (!home){
-//             return null;
-//         }else {
-//             return home;
-//         }
-//     }
-//
+    private findById = async (id) => {
+        let home = await this.homeRepository.findOneBy({id: id});  //findOne là tìm ra một thằng
+        if (!home){
+            return null;
+        }else {
+            return home;
+        }
+    }
 
-//
-//     findByName = async (search)=>{
-//         let sql = `select p.id, p.name, p.price, p.image, c.idCategory, c.name as nameCategory from home p join category c on p.category = c.id where p.name like '%${search}%'`
-//         let home = await this.homeRepository.query(sql)
-//         if (!home){
-//             return null
-//         }else {
-//             return home;
-//         }
-//     }
-//
-//     findByUsername= async (username)=>{
-//         let home = await this.homeRepository.findOneBy({username: username})
-//         if (!home){
-//             return null;
-//         }
-//         return home;
-//     }
-//
-// }
-//
+
+
+    // findByName = async (search)=>{
+    //     let sql = `select p.id, p.name, p.price, p.image, c.idCategory, c.name as nameCategory from home p join category c on p.category = c.id where p.name like '%${search}%'`
+    //     let home = await this.homeRepository.query(sql)
+    //     if (!home){
+    //         return null
+    //     }else {
+    //         return home;
+    //     }
+    // }
+
+    findByUsername= async (username)=>{
+        let home = await this.homeRepository.findOneBy({username: username})
+        if (!home){
+            return null;
+        }
+        return home;
+    }
+
+}
+
 export default new HomeService();

@@ -51,21 +51,12 @@ class HomeController {
 
     }
 
+    findById = async (req: Request, res: Response) => {
+        let id = req.params.id
+        let findById = await this.homeServices.findById(id);
+     await res.status(200).json(findById)
+    }
+
 }
-
-
-
-
-
-
-
-
-//     findById = async (req: Request, res: Response) => {
-//         let id = req.params.id
-//         let findById = await this.homeServices.findById(id);
-//         res.status(200).json(findById)
-//     }
-//
-// }
 
 export default new HomeController();

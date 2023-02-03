@@ -13,4 +13,5 @@ exports.HomeRouter.get('/', homeController_1.default.getAll);
 exports.HomeRouter.post('/', homeController_1.default.create);
 exports.HomeRouter.put('/:id', homeController_1.default.update);
 exports.HomeRouter.delete('/:id', homeController_1.default.delete);
+exports.HomeRouter.get('/:id', homeController_1.default.findById);
 //# sourceMappingURL=home.router.js.map
