@@ -11,13 +11,13 @@ function showFormEdit(id){
             },
             success: (home) => {
                 $('#body').html(`
-                <input type="text" placeholder="name" name="name" value="${home.name}">
+                <input type="text" placeholder="name" id="name" value="${home.name}">
                  <img src="${home.image}" alt="${home.image}" width="150" height="150">
-                 <input type="file" id="fileButton" onchange="uploadImage(event)" name="image" required valueImage>
+                 <input type="file" id="fileButton" onchange="uploadImage(event)" required valueImage>
                  <div id="imgDiv"></div>
-                <input type="text" placeholder="price" name="name" value="${home.price}">
-                <input type="text" placeholder="idUser" name="idUser" value="${home.idUser}">
-                 <input type="text" placeholder="idCategory" name="idCategory" value="${home.idCategory}">    
+                <input type="text" placeholder="price" id="price" value="${home.price}">
+                <input type="text" placeholder="idUser" id="idUser" value="${home.idUser}">
+                 <input type="text" placeholder="idCategory" id="idCategory"  value="${home.idCategory}">    
                  <select required id="categoryAdd">
                   <option selected>Category</option>
                   </select>
@@ -31,12 +31,13 @@ getCategoriesCreate()
 function Edit(id){
     let token = localStorage.getItem('token');
     if(token){
-        token = JSON.parse(token)
+        token = JSON.parse(token);
         let name = $('#name').val();
+        console.log(name)
         let image = localStorage.getItem('image');
         let price = $('#price').val();
-        let idUser = token.idUser
-        let idCategory = $('#idCategory').val()
+        let idUser = token.idUser;
+        let idCategory = $('#idCategory').val();
         let category = $('#categoryAdd').val();
         let home = {
             name: name,

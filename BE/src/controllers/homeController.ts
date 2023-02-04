@@ -32,8 +32,8 @@ class HomeController {
             let id = req.params.id;
             let home = {
                 name: req.body.name,
-                price : req.body.price,
                 image : req.body.image,
+                price : req.body.price,
                 idUser : req.body.idUser,
                 idCategory: req.body.idCategory
             }
