@@ -38,12 +38,15 @@ class HomeService {
                 return home;
             }
         };
-        this.findByUsername = async (username) => {
-            let home = await this.homeRepository.findOneBy({ username: username });
+        this.findByName = async (search) => {
+            let sql = `select p.id, p.name, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id where p.name like '%${search}%'`;
+            let home = await this.homeRepository.query(sql);
             if (!home) {
                 return null;
             }
-            return home;
+            else {
+                return home;
+            }
         };
         this.homeRepository = data_source_1.AppDataSource.getRepository(home_1.Home);
     }

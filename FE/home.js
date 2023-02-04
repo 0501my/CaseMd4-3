@@ -136,5 +136,48 @@ function getCategoriesCreate() {
         })
     }}
 
+function searchHome(value){
+    let name = value.toLowerCase()
+    $.ajax({
+        type: 'GET',
+        url: `http://localhost:3000/search?name=${name}`,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify(name),
+        success: (homes) => {
+            $("#body").html(`
+  <table class="table" border="1">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">image</th>
+      <th scope="col">Loại</th>
+      <th scope="col" colspan="2" style="text-align: center">Action</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
+    `)
+            let html = ''
+            homes.map(item => {
+                html += `<tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+            <td><img style="width: 300px; height: 200px" src="${item.image}" alt=""></td> 
+             <td>${item.nameCategory}</td>
+            <td><button onclick="remove(${item.id})">Delete</button></td>
+            <td><button onclick="showFormEdit(${item.id})">Edit</button></td>                  
+                         </tr>`
+            })
+            $("#tbody").html(html)
+        }
+    })
+}
+
 
 

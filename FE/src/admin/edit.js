@@ -33,7 +33,6 @@ function Edit(id){
     if(token){
         token = JSON.parse(token);
         let name = $('#name').val();
-        console.log(name)
         let image = localStorage.getItem('image');
         let price = $('#price').val();
         let idUser = token.idUser;

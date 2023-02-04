@@ -8,6 +8,7 @@ function showNav() {
     <button onclick="showFormAdd()">Add</button>
     <button onclick="showHome()">Home</button>
     <button onclick="logout()">logout</button>
+    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
     `)
         }else{
             $('#nav').html(`
@@ -15,6 +16,7 @@ function showNav() {
     <button onclick="Home()">User Home</button>
     <button onclick="showFormAdd()">Đăng bán</button>
     <button onclick="logout()">logout</button>
+    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
     `)
         }
     } else {
@@ -23,6 +25,7 @@ function showNav() {
   <button onclick="HomeShow()">Home</button>
     <button onclick="showFormLogin()">Login</button>
     <button onclick="showFormSignup()">Register</button>
+    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
     `)
     }
 }

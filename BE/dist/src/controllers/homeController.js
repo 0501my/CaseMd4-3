@@ -51,6 +51,11 @@ class HomeController {
             let findById = await this.homeServices.findById(id);
             await res.status(200).json(findById);
         };
+        this.search = async (req, res) => {
+            let search = req.query.name;
+            let homes = await this.homeServices.findByName(search);
+            res.status(200).json(homes);
+        };
         this.homeServices = homeServices_1.default;
     }
 }

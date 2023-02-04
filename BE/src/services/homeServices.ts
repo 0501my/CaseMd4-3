@@ -64,12 +64,14 @@ class HomeService {
     //     }
     // }
 
-    findByUsername= async (username)=>{
-        let home = await this.homeRepository.findOneBy({username: username})
+    findByName = async (search)=>{
+        let sql = `select p.id, p.name, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id where p.name like '%${search}%'`
+        let home = await this.homeRepository.query(sql)
         if (!home){
-            return null;
+            return null
+        }else {
+            return home;
         }
-        return home;
     }
 
 }

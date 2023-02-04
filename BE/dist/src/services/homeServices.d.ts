@@ -6,7 +6,7 @@ declare class HomeService {
     update: (id: any, newHome: any) => Promise<any>;
     private delete;
     private findById;
-    findByUsername: (username: any) => Promise<any>;
+    findByName: (search: any) => Promise<any>;
 }
 declare const _default: HomeService;
 export default _default;
