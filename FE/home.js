@@ -50,7 +50,6 @@ function showList() {
     <td><button onclick="showFormEdit('${item.id}')">Edit</button></td>
     <td><button onclick="Remove('${item.id}')">Delete</button></td>
 </tr>`
-
                     })
                     $('#tbody').html(html)
                 } else {
@@ -64,7 +63,7 @@ function showList() {
     <td>${item.price}</td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>
-    <td><button onclick="showFormEdit('${item.id}')">Mua</button></td>
+    <td><button onclick="showFormEdit('${item.id}')">Thuê</button></td>
 </tr>`
                     }else {
                             html += `<tr>
