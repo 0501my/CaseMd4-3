@@ -18,7 +18,6 @@ class UserService {
 
     checkUser = async (user) => {
         let userCheck = await this.userRepository.findOneBy({username: user.username})
-        console.log(userCheck)
         if (!userCheck) {
             return 'Username is not exit';
         }else {
