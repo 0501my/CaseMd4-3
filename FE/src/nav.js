@@ -11,7 +11,8 @@ function showNav() {
     `)
         }else {
             $('#nav').html(`
-    <button onclick="showHome()">Home</button>
+<button onclick="showHome()">Home</button>
+    <button onclick="Home()">User Home</button>
     <button onclick="logout()">logout</button>
     `)
         }

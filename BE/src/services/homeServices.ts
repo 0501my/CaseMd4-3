@@ -10,7 +10,7 @@ class HomeService {
     }
 
     getAll = async () => {
-        let sql = 'select u.username,p.id, p.name, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id join user u on p.idUser =  u.id '
+        let sql = 'select u.username,p.id, p.name,p.idUser, p.price, p.image, c.id as idCategory, c.name as nameCategory from home p join category c on p.idcategory = c.id join user u on p.idUser =  u.id '
         let home = await this.homeRepository.query(sql);
         return home;
     }
