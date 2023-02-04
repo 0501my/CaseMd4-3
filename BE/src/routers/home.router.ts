@@ -5,11 +5,11 @@ import {checkAdmin} from "../middleware/checkAdmin";
 export const HomeRouter = Router();
 
 
-HomeRouter.use(auth);
+// HomeRouter.use(auth);
 HomeRouter.get('/',homeController.getAll);
-HomeRouter.post('/',homeController.create);
-HomeRouter.put('/:id',homeController.update);
-HomeRouter.delete('/:id',homeController.delete);
-HomeRouter.get('/:id',homeController.findById);
+HomeRouter.post('/',auth,homeController.create);
+HomeRouter.put('/:id',auth,homeController.update);
+HomeRouter.delete('/:id',auth,homeController.delete);
+HomeRouter.get('/:id',auth,homeController.findById);
 
 

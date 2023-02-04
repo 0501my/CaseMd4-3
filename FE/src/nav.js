@@ -13,10 +13,12 @@ function showNav() {
             $('#nav').html(`
 <button onclick="showHome()">Home</button>
     <button onclick="Home()">User Home</button>
+    <button onclick="showFormAdd()">Đăng bán</button>
     <button onclick="logout()">logout</button>
     `)
         }
     } else {
+        HomeShow()
         $('#nav').html(`
     <button onclick="showFormLogin()">Login</button>
     <button onclick="showFormSignup()">Register</button>
