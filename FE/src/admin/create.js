@@ -4,7 +4,6 @@ function showFormAdd() {
 <input type="file" id="fileButton" onchange="uploadImage(event)">
 <div id="imgDiv"></div>
 <input type="number" placeholder="price" id="price">
-<input type="number" placeholder="idUser" id="idUser">
 <input type="number" placeholder="idCategory" id="idCategory">
 <select name="type" required id="categoryAdd">
 <option selected>Category</option>
@@ -16,10 +15,11 @@ function Add() {
     let token = localStorage.getItem('token');
     if (token) {
         token = JSON.parse(token)
+        console.log(token.username)
         let name = $('#name').val();
         let image = localStorage.getItem('image');
         let price = $('#price').val();
-        let idUser = $('#username').val();
+        let idUser = token.idUser;
         let idCategory = $('#idCategory').val()
         let category = $('#categoryAdd').val();
         let home = {
@@ -30,6 +30,7 @@ function Add() {
             idCategory : idCategory,
             category: category
         }
+        console.log(home)
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/home',

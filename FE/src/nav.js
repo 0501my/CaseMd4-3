@@ -7,12 +7,12 @@ function showNav() {
             $('#nav').html(`
     <button onclick="showFormAdd()">Add</button>
     <button onclick="showHome()">Home</button>
-    <button onclick="logOut()">logout</button>
+    <button onclick="logout()">logout</button>
     `)
         }else {
             $('#nav').html(`
     <button onclick="showHome()">Home</button>
-    <button onclick="logOut()">logout</button>
+    <button onclick="logout()">logout</button>
     `)
         }
     } else {
@@ -21,4 +21,10 @@ function showNav() {
     <button onclick="showFormSignup()">Register</button>
     `)
     }
+}
+
+function logout(){
+    localStorage.clear();
+    showFormLogin();
+    showNav()
 }
