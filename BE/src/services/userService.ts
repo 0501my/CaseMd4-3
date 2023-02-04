@@ -29,7 +29,6 @@ class UserService {
                     idUser: userCheck.id,
                     username:userCheck.username,
                     role: userCheck.role
-
                 }
                 let check = {
                     idUser: userCheck.id,
@@ -44,10 +43,6 @@ class UserService {
         }
 
     }
-
-
-
-
     register = async (user) =>{
         let userCheck = await this.userRepository.findOneBy({username: user.username})
         if (!userCheck) {

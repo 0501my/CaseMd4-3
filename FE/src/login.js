@@ -15,18 +15,21 @@ function Login(){
         username: username,
         password: password
     }
-    $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3000/auth/login',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify(user),
-        success: (token) => {
-            localStorage.setItem('token',JSON.stringify(token))
-            showHome();
-            showNav();
-        }
-    })
+    if(user){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/auth/login',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(user),
+            success: (token) => {
+                localStorage.setItem('token',JSON.stringify(token))
+                showHome();
+                showNav();
+            }
+        })
+    }
+
 }
 
