@@ -4,6 +4,7 @@ function showFormSignup() {
     <input type="text" placeholder="Username or Email" id="username">
     <input type="password" placeholder="Password" id="password">
     <button type="submit" onclick="signUp()">SignUp</button>
+    <button type="submit" onclick="showFormLogin()">Back Login</button>
   </div>
 </nav>`)
 }
@@ -17,7 +18,7 @@ function signUp(){
     }
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/auth/register',
+        url: 'http://localhost:3000/auth/signup',
         headers: {
             'Content-Type': 'application/json',
         },

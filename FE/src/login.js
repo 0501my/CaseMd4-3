@@ -4,6 +4,7 @@ function showFormLogin(){
     <input type="text" placeholder="Username or Email" id="username">
     <input type="password" placeholder="Password" id="password">
     <button type="submit" onclick="Login()">Login</button>
+     <button type="submit" onclick="showFormSignup()">Signup</button>
   </div>
 </nav>`)
 }
@@ -28,8 +29,4 @@ function Login(){
         }
     })
 }
-function logOut(){
-    localStorage.clear()
-    showFormLogin()
-    showNav()
-}
+

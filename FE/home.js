@@ -1,4 +1,4 @@
-// showHome()
+
 
 function showHome() {
     let token = localStorage.getItem('token');
@@ -125,3 +125,6 @@ function getCategoriesCreate() {
             }
         })
     }}
+
+
+
