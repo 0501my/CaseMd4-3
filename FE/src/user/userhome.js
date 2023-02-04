@@ -1,6 +1,4 @@
-
-
-function showHome() {
+function Home() {
     let token = localStorage.getItem('token');
     if (token) {
         $('#body').html(`<table class="table ">
@@ -19,13 +17,13 @@ function showHome() {
         </table>
      
 </table>`)
-        showList()
+       List()
     }else {
         showFormLogin()
     }
 }
 
-function showList() {
+function List() {
     let token = localStorage.getItem('token');
     if (token) {
         token = JSON.parse(token)
@@ -37,10 +35,12 @@ function showList() {
                 Authorization: 'Bearer ' + token.token
             },
             success: (home) => {
-                if (token.role === 'admin') {
+                if (token.role === "member") {
                     let html = ''
                     home.map(item => {
-                        html += `<tr>
+
+                        if(token.idUser === item.idUser) {
+                            html += `<tr>
     <td>${item.id}</td>
     <td>${item.name}</td>
      <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
@@ -50,13 +50,12 @@ function showList() {
     <td><button onclick="showFormEdit('${item.id}')">Edit</button></td>
     <td><button onclick="Remove('${item.id}')">Delete</button></td>
 </tr>`
-
+                        }
                     })
                     $('#tbody').html(html)
                 } else {
                     let html = ''
                     home.map(item => {
-                        if(token.idUser !== item.idUser){
                         html += `<tr>
     <td>${item.id}</td>
     <td>${item.name}</td>
@@ -66,18 +65,8 @@ function showList() {
     <td>${item.nameCategory}</td>
     <td><button onclick="showFormEdit('${item.id}')">Mua</button></td>
 </tr>`
-                    }else {
-                            html += `<tr>
-    <td>${item.id}</td>
-    <td>${item.name}</td>
-    <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
-    <td>${item.price}</td>
-    <td>${item.username}</td>
-    <td>${item.nameCategory}</td>
-</tr>`
-                        }
+                    })
                     $('#tbody').html(html)
-                    }    )
                 }
             }
 
@@ -136,6 +125,3 @@ function getCategoriesCreate() {
             }
         })
     }}
-
-
-

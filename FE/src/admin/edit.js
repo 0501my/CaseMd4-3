@@ -35,7 +35,7 @@ function Edit(id){
         let name = $('#name').val();
         let image = localStorage.getItem('image');
         let price = $('#price').val();
-        let idUser = $('#username').val();
+        let idUser = token.idUser
         let idCategory = $('#idCategory').val()
         let category = $('#categoryAdd').val();
         let home = {

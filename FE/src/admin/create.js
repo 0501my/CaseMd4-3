@@ -15,7 +15,6 @@ function Add() {
     let token = localStorage.getItem('token');
     if (token) {
         token = JSON.parse(token)
-        console.log(token.username)
         let name = $('#name').val();
         let image = localStorage.getItem('image');
         let price = $('#price').val();
