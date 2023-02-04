@@ -15,21 +15,27 @@ function Login(){
         username: username,
         password: password
     }
-    if(user){
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:3000/auth/login',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            data: JSON.stringify(user),
-            success: (token) => {
-                localStorage.setItem('token',JSON.stringify(token))
-                showHome();
-                showNav();
-            }
-        })
-    }
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/auth/login',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: JSON.stringify(user),
+                success: (token) => {
+                    if(token === "Username is not exit"){
+                        alert("bạn nhập đúng tài khoản hoặc mật khẩu")
+                    }else {
+                        localStorage.setItem('token',JSON.stringify(token))
+                        showHome();
+                        showNav();
+                    }
+
+                }
+            })
+
+
+
 
 }
 

@@ -16,6 +16,7 @@ class UserService {
         };
         this.checkUser = async (user) => {
             let userCheck = await this.userRepository.findOneBy({ username: user.username });
+            console.log(userCheck);
             if (!userCheck) {
                 return 'Username is not exit';
             }
@@ -34,7 +35,7 @@ class UserService {
                         idUser: userCheck.id,
                         username: userCheck.username,
                         role: userCheck.role,
-                        token: await jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
+                        token: jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
                             expiresIn: 3000000
                         })
                     };

@@ -9,7 +9,7 @@ function showNav() {
     <button onclick="showHome()">Home</button>
     <button onclick="logout()">logout</button>
     `)
-        }else {
+        }else{
             $('#nav').html(`
 <button onclick="showHome()">Home</button>
     <button onclick="Home()">User Home</button>
@@ -20,6 +20,7 @@ function showNav() {
     } else {
         HomeShow()
         $('#nav').html(`
+  <button onclick="HomeShow()">Home</button>
     <button onclick="showFormLogin()">Login</button>
     <button onclick="showFormSignup()">Register</button>
     `)

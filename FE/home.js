@@ -9,7 +9,7 @@ function showHome() {
                 <th>Name</th>
                 <th>Image</th>
                 <th>Price</th>
-              <th>User</th>
+                <th>User</th>
                 <th>Category</th>
                 <th></th>
                 <th></th>
@@ -54,10 +54,10 @@ function showList() {
                     $('#tbody').html(html)
                 } else {
                     let html = ''
-                    home.map(item => {
+                    home.map((item , index) => {
                         if(token.idUser !== item.idUser){
                         html += `<tr>
-    <td>${item.id}</td>
+   <td>${index + 1}</td>
     <td>${item.name}</td>
     <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
     <td>${item.price}</td>
@@ -67,7 +67,7 @@ function showList() {
 </tr>`
                     }else {
                             html += `<tr>
-    <td>${item.id}</td>
+    <td>${index + 1}</td>
     <td>${item.name}</td>
     <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
     <td>${item.price}</td>

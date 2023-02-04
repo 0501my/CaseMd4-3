@@ -29,9 +29,9 @@ function ListHome() {
             },
             success: (home) => {
                 let html = ''
-                home.map(item => {
+                home.map((item,index) => {
                     html += `<tr>
-    <td>${item.id}</td>
+    <td>${index + 1}</td>
     <td>${item.name}</td>
      <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
     <td>${item.price}</td>
