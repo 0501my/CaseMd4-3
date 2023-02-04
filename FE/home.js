@@ -136,17 +136,17 @@ function getCategoriesCreate() {
         })
     }}
 
-function searchHome(value){
+function searchHome(value) {
     let name = value.toLowerCase()
-    $.ajax({
-        type: 'GET',
-        url: `http://localhost:3000/search?name=${name}`,
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify(name),
-        success: (homes) => {
-            $("#body").html(`
+        $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/search?name=${name}`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(name),
+            success: (homes) => {
+                $("#body").html(`
   <table class="table" border="1">
   <thead>
     <tr>
@@ -162,22 +162,23 @@ function searchHome(value){
   </tbody>
 </table>
     `)
-            let html = ''
-            homes.map(item => {
-                html += `<tr>
+                let html = ''
+                homes.map(item => {
+                    html += `<tr>
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.price}</td>
             <td><img style="width: 300px; height: 200px" src="${item.image}" alt=""></td> 
              <td>${item.nameCategory}</td>
-            <td><button onclick="remove(${item.id})">Delete</button></td>
+            <td><button onclick="Remove('${item.id}')">Delete</button></td>
             <td><button onclick="showFormEdit(${item.id})">Edit</button></td>                  
                          </tr>`
-            })
-            $("#tbody").html(html)
-        }
-    })
-}
+                })
+                $("#tbody").html(html)
+            }
+        })
+    }
+
 
 
 

@@ -25,7 +25,7 @@ function showNav() {
   <button onclick="HomeShow()">Home</button>
     <button onclick="showFormLogin()">Login</button>
     <button onclick="showFormSignup()">Register</button>
-    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
+    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHomeUser(this.value)">
     `)
     }
 }
