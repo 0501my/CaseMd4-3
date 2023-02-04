@@ -1,7 +1,7 @@
 import {Router} from "express";
 import orderController from "../controllers/orderController"
 export const orderRouter = Router();
-// router.get('/order',orderController.)
-orderRouter.post('/order', orderController.create)
-// router.put('/order',orderController.)
-// router.delete('/order',orderController.)
+orderRouter.get('/',orderController.getAll)
+orderRouter.post('/',orderController.create)
+orderRouter.put('/:id',orderController.update)
+orderRouter.delete('/:id',orderController.remove)

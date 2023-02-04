@@ -5,8 +5,10 @@ const express_1 = require("express");
 const home_router_1 = require("./home.router");
 const user_router_1 = require("./user.router");
 const category_router_1 = require("./category.router");
+const order_router_1 = require("./order.router");
 exports.router = (0, express_1.Router)();
 exports.router.use('/home', home_router_1.HomeRouter);
 exports.router.use('/auth', user_router_1.userRouter);
 exports.router.use('/categories', category_router_1.categoryRouter);
+exports.router.use('/order', order_router_1.orderRouter);
 //# sourceMappingURL=router.js.map

@@ -1,11 +1,11 @@
 declare class OrderServices {
     private orderRepository;
     constructor();
-    getAll: () => Promise<void>;
+    getAll: () => Promise<any>;
     save: (order: any) => Promise<any>;
-    update: () => Promise<void>;
-    remove: () => Promise<void>;
-    findById: () => Promise<void>;
+    update: (id: any, newOrder: any) => Promise<any>;
+    remove: (id: any) => Promise<any>;
+    findById: (id: any) => Promise<any>;
 }
 declare const _default: OrderServices;
 export default _default;
