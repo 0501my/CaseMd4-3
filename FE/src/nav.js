@@ -7,6 +7,7 @@ function showNav() {
             $('#nav').html(`
     <button onclick="showFormAdd()">Add</button>
     <button onclick="showHome()">Home</button>
+    <button onclick="showOrderDetail()">Show user order</button>
     <button onclick="logout()">logout</button>
     <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
     `)
@@ -15,6 +16,7 @@ function showNav() {
 <button onclick="showHome()">Home</button>
     <button onclick="Home()">User Home</button>
     <button onclick="showFormAdd()">Đăng bán</button>
+    <button onclick="showOrderDetail()">Show user order</button>
     <button onclick="logout()">logout</button>
     <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
     `)
