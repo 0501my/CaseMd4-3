@@ -1,3 +1,4 @@
+HomeShow()
 showNav()
 function showNav() {
     let token = localStorage.getItem('token');
@@ -6,7 +7,7 @@ function showNav() {
         if(token.role === "admin"){
             $('#nav').html(`
      <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: blue;">
-<div class="navbar-brand" onclick="showHome()">House</div>
+<!--<div class="navbar-brand" onclick="showHome()">House</div>-->
 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
         aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation"></button>
