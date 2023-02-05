@@ -35,7 +35,7 @@ function ListHome() {
     <td>${item.price}</td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>
-    <td><button onclick="Thue()">Thuê</button></td>
+    <td><button onclick="showFormHire(${item.id})">Thuê</button></td>
 </tr>`
                 })
                 $('#tbody').html(html)
@@ -85,7 +85,8 @@ function searchHomeUser(value) {
             <td>${item.price}</td>
             <td><img style="width: 300px; height: 200px" src="${item.image}" alt=""></td> 
              <td>${item.nameCategory}</td>
-            <td><button onclick="Thue()">Thuê</button></td>
+            <td><button onclick="showFormHire(${item.id})">Thuê</button></td>
+                             
                          </tr>`
             })
             $("#tbody").html(html)

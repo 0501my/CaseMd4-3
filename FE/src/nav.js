@@ -36,6 +36,7 @@ function showNav() {
     `)
         }else{
             $('#nav').html(`
+    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: blue;">
 <div class="navbar-brand" onclick="showHome()">House</div>
 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
@@ -67,7 +68,6 @@ function showNav() {
     
     `)
         }
-
     } else {
         HomeShow()
         $('#nav').html(`
