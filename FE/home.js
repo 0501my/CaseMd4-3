@@ -1,9 +1,8 @@
-
-
 function showHome() {
     let token = localStorage.getItem('token');
     if (token) {
-        $('#body').html(`<table class="table ">
+        $('#body').html(`
+<table class="table ">
             <tr>
                 <th>Home ID</th>
                 <th>Name</th>
@@ -11,16 +10,14 @@ function showHome() {
                 <th>Price</th>
                 <th>User</th>
                 <th>Category</th>
-                <th></th>
-                <th></th>
-                <th>Action</th>
+              <th colspan="2" >Action</th>
             </tr>
             <tbody id="tbody">
         </table>
      
 </table>`)
         showList()
-    }else {
+    } else {
         showFormLogin()
     }
 }
@@ -39,9 +36,9 @@ function showList() {
             success: (home) => {
                 if (token.role === 'admin') {
                     let html = ''
-                    home.map(item => {
+                    home.map((item, index) => {
                         html += `<tr>
-    <td>${item.id}</td>
+    <td>${index + 1}</td>
     <td>${item.name}</td>
      <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
     <td>${item.price}</td>
@@ -54,9 +51,9 @@ function showList() {
                     $('#tbody').html(html)
                 } else {
                     let html = ''
-                    home.map((item , index) => {
-                        if(token.idUser !== item.idUser){
-                        html += `<tr>
+                    home.map((item, index) => {
+                        if (token.idUser !== item.idUser) {
+                            html += `<tr>
    <td>${index + 1}</td>
     <td>${item.name}</td>
     <td>${item.price}</td>
@@ -65,7 +62,7 @@ function showList() {
     <td>${item.nameCategory}</td>
     <td><button onclick="showFormEdit('${item.id}')">Thuê</button></td>
 </tr>`
-                    }else {
+                        } else {
                             html += `<tr>
     <td>${index + 1}</td>
     <td>${item.name}</td>
@@ -75,7 +72,7 @@ function showList() {
     <td>${item.nameCategory}</td>
 </tr>`
                         }
-                    $('#tbody').html(html)
+                        $('#tbody').html(html)
                     })
                 }
             }
@@ -113,9 +110,10 @@ function uploadImage(e) {
             localStorage.setItem('image', downloadURL);
         });
 }
+
 function getCategoriesCreate() {
     let token = localStorage.getItem('token');
-    if(token){
+    if (token) {
         token = JSON.parse(token)
         $.ajax({
             type: 'GET',
@@ -134,7 +132,8 @@ function getCategoriesCreate() {
                 $('#categoryAdd').html(Categories);
             }
         })
-    }}
+    }
+}
 
 function searchHome(value) {
     let token = localStorage.getItem('token');
@@ -150,27 +149,26 @@ function searchHome(value) {
             },
             data: JSON.stringify(name),
             success: (homes) => {
-                if(token.role === 'admin'){
-                $("#body").html(`
-  <table class="table" border="1">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">price</th>
-      <th scope="col">image</th>
-       <th scope="col">User</th>
-      <th scope="col">Loại</th>
-      <th scope="col" style="text-align: center">Action</th>
-    </tr>
-  </thead>
-  <tbody id="tbody">
-  </tbody>
+                if (token.role === 'admin') {
+                    $("#body").html(`
+  <table class="table ">
+            <tr>
+                <th>Home ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+              <th>User</th>
+                <th>Category</th>
+                <th colspan="2">Action</th>
+            </tr>
+            <tbody id="tbody">
+        </table>
+     
 </table>
     `)
-                let html = ''
-                homes.map(item => {
-                    html += `<tr>
+                    let html = ''
+                    homes.map(item => {
+                        html += `<tr>
             <td>${item.id}</td>
     <td>${item.name}</td>
      <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
@@ -180,29 +178,28 @@ function searchHome(value) {
     <td><button onclick="showFormEdit('${item.id}')">Edit</button></td>
     <td><button onclick="Remove('${item.id}')">Delete</button></td>              
                          </tr>`
-                })
-                $("#tbody").html(html)
-            }else {
+                    })
+                    $("#tbody").html(html)
+                } else {
                     $("#body").html(`
-  <table class="table" border="1">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">price</th>
-      <th scope="col">image</th>
-      <th scope="col">User</th>
-      <th scope="col">Loại</th>
-      <th scope="col" colspan="2" style="text-align: center">Action</th>
-    </tr>
-  </thead>
-  <tbody id="tbody">
-  </tbody>
+  <table class="table ">
+            <tr>
+                <th>Home ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                 <th>User</th>
+                <th>Category</th>
+                <th colspan="2">Action</th>
+            </tr>
+            <tbody id="tbody">
+        </table>
+     
 </table>
     `)
                     let html = ''
-                    homes.map((item,index) => {
-                        if(token.idUser !== item.idUser){
+                    homes.map((item, index) => {
+                        if (token.idUser !== item.idUser) {
                             html += `<tr>
    <td>${item.id}</td>
     <td>${item.name}</td>
@@ -212,7 +209,7 @@ function searchHome(value) {
     <td>${item.nameCategory}</td>
     <td><button onclick="showFormEdit('${item.id}')">Thuê</button></td>
 </tr>`
-                        }else {
+                        } else {
                             html += `<tr>
     <td>${item.id}</td>
     <td>${item.name}</td>

@@ -1,12 +1,16 @@
 function showFormSignup() {
-    $('#body').html(`<nav>
-  <div>
-    <input type="text" placeholder="Username or Email" id="username">
-    <input type="password" placeholder="Password" id="password">
-    <button type="submit" onclick="signUp()">SignUp</button>
-    <button type="submit" onclick="showFormLogin()">Back Login</button>
-  </div>
-</nav>`)
+    $('#body').html(`
+    <div  class="mb-6" style="width: 300px; height: 80px; text-align: center">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" name="username" id="username">
+    </div>
+    <div class="mb-6" style="width: 300px; height: 80px; text-align: center">
+        <label class="form-label">password</label>
+        <input type="password" class="form-control" name="password" id="password">
+    </div>
+        <button type="submit" onclick="signUp()" class="btn btn-primary">Sign Up</button>
+
+`)
 }
 function signUp(){
     let username = $('#username').val();

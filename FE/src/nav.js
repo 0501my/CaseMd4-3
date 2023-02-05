@@ -5,27 +5,85 @@ function showNav() {
         token = JSON.parse(token)
         if(token.role === "admin"){
             $('#nav').html(`
-    <button onclick="showFormAdd()">Add</button>
-    <button onclick="showHome()">Home</button>
-    <button onclick="logout()">logout</button>
-    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
+     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: blue;">
+<div class="navbar-brand" onclick="showHome()">House</div>
+<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+<div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <div class="nav-link" onclick="showHome()">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <div class="nav-link" onclick="showFormAdd()" ">Add</div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user" id="dropdownId" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">User</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" href="/user/edit-info">Edit Info</a>
+                <a class="dropdown-item" href="/user/change-password">Change Password</a>
+                <div class="dropdown-item" onclick="logout()">Log out</a>
+            </div>
+        </li>
+        <li class="nav-item">
+        <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHome(this.value)"> </div>
+</li>
+    </ul>
+</div>
+</nav>
     `)
         }else{
             $('#nav').html(`
-<button onclick="showHome()">Home</button>
-    <button onclick="Home()">User Home</button>
-    <button onclick="showFormAdd()">Đăng bán</button>
-    <button onclick="logout()">logout</button>
-    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHome(this.value)">
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: blue;">
+<div class="navbar-brand" onclick="showHome()">House</div>
+<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+<div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <div class="nav-link" onclick="Home()">User Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <div class="nav-link" onclick="showFormAdd()" ">Đăng bán</div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/user" id="dropdownId" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">User</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" href="/user/edit-info">Edit Info</a>
+                <a class="dropdown-item" href="/user/change-password">Change Password</a>
+                <div class="dropdown-item" onclick="logout()">Log out</a>
+            </div>
+        </li>
+        <li class="nav-item">
+        <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHome(this.value)"> </div>
+</li>
+    </ul>
+</div>
+</nav>
+    
     `)
         }
+
     } else {
         HomeShow()
         $('#nav').html(`
-  <button onclick="HomeShow()">Home</button>
-    <button onclick="showFormLogin()">Login</button>
-    <button onclick="showFormSignup()">Register</button>
-    <input type="search" id="search" placeholder="Enter name" onkeyup="searchHomeUser(this.value)">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: blue;">
+<div class="navbar-brand" onclick="HomeShow()">House</div>
+<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+<div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <div class="nav-link" onclick="showFormLogin()">Login <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</div>
+</nav>
     `)
     }
 }

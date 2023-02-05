@@ -1,14 +1,51 @@
 function showFormAdd() {
     $('#body').html(`
-<input type="text" placeholder="name" id="name">
-<input type="file" id="fileButton" onchange="uploadImage(event)">
-<div id="imgDiv"></div>
-<input type="number" placeholder="price" id="price">
-<input type="number" placeholder="idCategory" id="idCategory">
-<select name="type" required id="categoryAdd">
-<option selected>Category</option>
-</select>
-<button type="submit" onclick="Add()">Add</button>`)
+<div class="container-fluid">
+    <nav></nav>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4">
+            <p class="card-text"> Edit Room Info
+            <div class="form-inline my-2 my-lg-0" method="post">
+                <table class="table">
+                  <tr>
+                        <td>Name</td>
+                        <td><input class="form-control mr-sm-2" type="text" placeholder="Name" name="name" id="name"
+                                   required valueDescription></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Image</td>
+                        <td><input class="form-control mr-sm-2"  type="file" id="fileButton" onchange="uploadImage(event)" required
+                                   valueImage></td>
+                    </tr>
+                    <tr>
+                    <div id="imgDiv"></div>
+</tr>
+ <tr>
+                        <td>Category</td>
+                        <td><input class="form-control mr-sm-2" type="text" placeholder="idCategory" name="idCategory" id="idCategory"
+                                   required valueidCategory></td>
+                    </tr>
+                     <td>Price</td>
+                        <td><input class="form-control mr-sm-2" type="text" placeholder="price" name="price" id="price"
+                                   required valuePrice></td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>
+                            <select class="form-control mr-sm-2" <select name="type" required id="categoryAdd">>
+                              <option selected>Category</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn btn btn-primary" onclick="Add()" type="submit">Save</button>
+            </fodrm>
+            </p>
+        </div>
+    </div>
+</div>
+`)
     getCategoriesCreate()
 }
 function Add() {

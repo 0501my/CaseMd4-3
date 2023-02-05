@@ -7,9 +7,7 @@ function HomeShow() {
                 <th>Price</th>
               <th>User</th>
                 <th>Category</th>
-                <th></th>
-                <th></th>
-                <th>Action</th>
+                <th colspan="2">Action</th>
             </tr>
             <tbody id="tbody">
         </table>
@@ -63,21 +61,22 @@ function searchHomeUser(value) {
         data: JSON.stringify(name),
         success: (homes) => {
             $("#body").html(`
-  <table class="table" border="1">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">price</th>
-      <th scope="col">image</th>
-      <th scope="col">Loại</th>
-      <th scope="col" colspan="2" style="text-align: center">Action</th>
-    </tr>
-  </thead>
-  <tbody id="tbody">
-  </tbody>
-</table>
-    `)
+  <table class="table ">
+            <tr>
+                <th>Home ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>User</th>
+                <th>Category</th>
+                <th></th>
+                <th></th>
+                <th colspan="2">Action</th>
+            </tr>
+            <tbody id="tbody">
+        </table>
+     
+</table>`)
             let html = ''
             homes.map(item => {
                 html += `<tr>
@@ -87,7 +86,6 @@ function searchHomeUser(value) {
             <td><img style="width: 300px; height: 200px" src="${item.image}" alt=""></td> 
              <td>${item.nameCategory}</td>
             <td><button onclick="Thue()">Thuê</button></td>
-                             
                          </tr>`
             })
             $("#tbody").html(html)
