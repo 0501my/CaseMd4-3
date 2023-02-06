@@ -3,7 +3,6 @@ function showFormLogin(){
 <div class="container ">
   <div class="row justify-content-center">
     <div class="col-12 col-md-4">
-      <form method="post">
         <div class="form-group">
           <h2 class="text-center">Login</h2>
           <label for="exampleInputEmail1">User Name</label>
@@ -20,7 +19,7 @@ function showFormLogin(){
         <button type="submit" onclick="Login()" class="btn btn-primary">Login</button>
         </br>
         </br>
-      </form>
+   
       <div> Nếu chưa có tài khoản hãy đăng ký tại đây :
         <button type="submit" onclick="showFormSignup()" class="btb btn-primary" >Đăng kí</button>
       </div>

@@ -16,6 +16,7 @@ function hire(id, price) {
         let endTime = $('#endTime').val();
         let date1 = new Date(startTime);
         let date2 = new Date(endTime);
+        console.log(startTime,endTime,price)
         let Difference_In_Time = date2.getTime() - date1.getTime();
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         let totalPrice = Difference_In_Days * price;
@@ -27,6 +28,7 @@ function hire(id, price) {
             startTime: startTime,
             endTime: endTime
         }
+        console.log(order)
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/order',
@@ -82,7 +84,7 @@ function showOrderDetail() {
                 <th>Total Price</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-              <th>Người thuê</th>
+                <th>Người thuê</th>
                 <th>Chủ nhà</th>
                 <th>Action</th>
             </tr>

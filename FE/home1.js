@@ -35,7 +35,7 @@ function ListHome() {
     <td>${item.price}</td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>
-    <td><button onclick="showFormHire(${item.id})">Thuê</button></td>
+    <td><button onclick="Thue()">Thuê</button></td>
 </tr>`
                 })
                 $('#tbody').html(html)
@@ -75,7 +75,7 @@ function searchHomeUser(value) {
             </tr>
             <tbody id="tbody">
         </table>
-     
+    
 </table>`)
             let html = ''
             homes.map(item => {

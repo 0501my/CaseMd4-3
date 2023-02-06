@@ -16,6 +16,7 @@ function showHome() {
         </table>
      
 </table>`)
+
         showList()
     } else {
         showFormLogin()
@@ -52,6 +53,7 @@ function showList() {
                 } else {
                     let html = ''
                     home.map((item, index) => {
+                        console.log(item)
                         if (token.idUser !== item.idUser) {
                             html += `<tr>
    <td>${index + 1}</td>
@@ -60,7 +62,7 @@ function showList() {
     <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>
-    <td><button onclick="showFormHire(${item.id},${item.price})">Thuê</button></td>
+    <td><button onclick="showFormHire('${item.id}','${item.price}')">Thuê</button></td>
 </tr>`
                         } else {
                             html += `<tr>
@@ -207,7 +209,7 @@ function searchHome(value) {
     <td>${item.price}</td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>
-    <td><button onclick="showFormHire(${item.id},${item.price})">Thuê</button></td>
+    <td><button onclick="showFormHire('${item.id}','${item.price}')">Thuê</button></td>
 </tr>`
                         } else {
                             html += `<tr>
