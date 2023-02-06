@@ -10,7 +10,7 @@ export class Order{
     idUser : number;
     @Column()
     totalPrice : number;
-    @Column({type: "datetime"})
+    @Column()
     startTime : string;
     @Column()
     endTime : string;
