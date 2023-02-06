@@ -173,7 +173,7 @@ function searchHome(value) {
                         html += `<tr>
             <td>${item.id}</td>
     <td>${item.name}</td>
-     <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
+     <td><img src="${item.image}" style="height: 300px; width: 300px"></td>
     <td>${item.price}</td>
     <td>${item.username}</td>
     <td>${item.nameCategory}</td>

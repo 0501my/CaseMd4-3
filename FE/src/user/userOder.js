@@ -110,7 +110,7 @@ function orderList() {
                 Authorization: 'Bearer ' + token.token
             },
             success: (home) => {
-                if (token.role === "member") {
+                if (token.role === "admin") {
                     let html = ''
                     home.map(item => {
                         html += `<tr>
@@ -122,13 +122,85 @@ function orderList() {
     <td>${item.endTime}</td>
     <td>${item.nguoithue}</td>
     <td>${item.chunha}</td>
-    <td><button onclick="">Trả phòng</button></td>
+    <td><button onclick="">Xóa</button></td>
 </tr>`
 
                     })
+                    $('#tbody').html(html)
+                }else {
+                    let html = ''
+                    home.map(item => {
+                        if(token.idUser === item.idnguoithue) {
+
+                            html += `<tr>
+    <td>${item.id}</td>
+    <td>${item.name}</td>
+     <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
+    <td>${item.totalPrice}</td>
+    <td>${item.startTime}</td>
+    <td>${item.endTime}</td>
+    <td>${item.nguoithue}</td>
+    <td>${item.chunha}</td>
+    <td><button onclick="">Trả phòng</button></td>
+</tr>`
+                        }
+
+
+                    })
+
                     $('#tbody').html(html)
                 }
             }
         })
     }
+}
+function showHistoryRent(){
+    let token = localStorage.getItem('token');
+    if (token) {
+        $('#body').html(`<table class="table ">
+            <tr>
+                <th>Order ID</th>
+                <th>Tên nhà</th>
+                <th>Image</th>
+                <th>Total Price</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Người thuê</th>
+                <th>Chủ nhà</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="tbody">
+        </table>
+     
+</table>`)
+        orderList()
+    } else {
+        showFormLogin()
+    }
+}
+function showFormChangePassword(idUser){
+    let token = localStorage.getItem('token');
+    console.log(token)
+    if (token) {
+        token = JSON.parse(token)
+        $.ajax({
+            type: 'POST',
+            url: `http://localhost:3000/changepassword/${idUser}`,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token.token
+            },
+            success: () => {
+                $('#body').html(`
+                <input placeholder="oldPassword" id="oldPassword">
+                <input placeholder="newPassword" id="newPassword">
+                <input placeholder="Password" id="Password">
+                `)
+            }
+        })
+        changePassword()
+    }
+}
+function changePassword(){
+
 }

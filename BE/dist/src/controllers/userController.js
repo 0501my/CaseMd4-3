@@ -14,6 +14,28 @@ class ProductController {
             let response = await this.userService.checkUser(req.body);
             res.status(200).json(response);
         };
+        this.changePassword = async (req, res) => {
+            try {
+                let user = await this.userService.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword);
+                if (!user.check) {
+                    res.json({
+                        user,
+                        mess: "Old Password Is Not Correct"
+                    });
+                }
+                else {
+                    res.json({
+                        user,
+                        mess: "Change Password Successfully"
+                    });
+                }
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.userService = UserService_1.default;
     }
 }

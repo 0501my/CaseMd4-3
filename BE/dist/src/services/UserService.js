@@ -20,7 +20,7 @@ class UserService {
                 return 'Username is not exit';
             }
             else {
-                let passwordCompare = bcrypt_1.default.compare(user.password, userCheck.password);
+                let passwordCompare = await bcrypt_1.default.compare(user.password, userCheck.password);
                 if (!passwordCompare) {
                     return 'Password is wrong';
                 }
@@ -49,6 +49,30 @@ class UserService {
                 return this.userRepository.save(user);
             }
             return 'Username registered';
+        };
+        this.checkChangePassword = async (idUser, oldPassword, newPassword) => {
+            let user = {
+                check: false,
+                userFind: []
+            };
+            let userFind = await this.userRepository.findBy({ id: idUser });
+            if (userFind.length === 0) {
+                user.check = false;
+            }
+            else {
+                let compare = await bcrypt_1.default.compare(oldPassword, userFind[0].password);
+                if (!compare) {
+                    user.userFind = userFind;
+                    user.check = false;
+                }
+                if (compare) {
+                    newPassword = await bcrypt_1.default.hash(newPassword, 10);
+                    await this.userRepository.update({ id: idUser }, { password: newPassword });
+                    user.check = true;
+                    user.userFind = userFind;
+                }
+            }
+            return user;
         };
         this.userRepository = data_source_1.AppDataSource.getRepository(user_1.User);
     }

@@ -21,7 +21,7 @@ class UserService {
         if (!userCheck) {
             return 'Username is not exit';
         }else {
-            let passwordCompare = bcrypt.compare(user.password, userCheck.password);
+            let passwordCompare = await bcrypt.compare(user.password, userCheck.password);
             if (!passwordCompare){
                 return 'Password is wrong'
             }else {
@@ -50,6 +50,29 @@ class UserService {
             return this.userRepository.save(user);
         }
         return 'Username registered';
+    }
+    checkChangePassword = async (idUser, oldPassword, newPassword) => {
+        let user = {
+            check: false,
+            userFind: []
+        }
+        let userFind = await this.userRepository.findBy({id: idUser})
+        if (userFind.length === 0) {
+            user.check = false;
+        } else {
+            let compare = await bcrypt.compare(oldPassword, userFind[0].password)
+            if (!compare) {
+                user.userFind = userFind
+                user.check = false;
+            }
+            if (compare) {
+                newPassword = await bcrypt.hash(newPassword, 10)
+                await this.userRepository.update({id: idUser}, {password: newPassword})
+                user.check = true;
+                user.userFind = userFind
+            }
+        }
+        return user
     }
 
 }

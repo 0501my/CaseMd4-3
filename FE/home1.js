@@ -5,7 +5,7 @@ function HomeShow() {
                 <th>Name</th>
                 <th>Image</th>
                 <th>Price</th>
-              <th>User</th>
+              <th>Người Đăng</th>
                 <th>Category</th>
                 <th colspan="2">Action</th>
             </tr>
@@ -67,10 +67,8 @@ function searchHomeUser(value) {
                 <th>Name</th>
                 <th>Image</th>
                 <th>Price</th>
-                <th>User</th>
-                <th>Category</th>
-                <th></th>
-                <th></th>
+                <th>Người Đăng</th>
+                <th>Category</th> 
                 <th colspan="2">Action</th>
             </tr>
             <tbody id="tbody">
@@ -82,8 +80,9 @@ function searchHomeUser(value) {
                 html += `<tr>
             <td>${item.id}</td>
             <td>${item.name}</td>
+             <td><img style="width: 300px; height: 300px" src="${item.image}" alt=""></td> 
             <td>${item.price}</td>
-            <td><img style="width: 300px; height: 200px" src="${item.image}" alt=""></td> 
+            <td>${item.username}</td>
              <td>${item.nameCategory}</td>
             <td><button onclick="showFormHire(${item.id})">Thuê</button></td>
                              

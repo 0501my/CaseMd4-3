@@ -9,6 +9,10 @@ declare class UserService {
         token: any;
     }>;
     register: (user: any) => Promise<any>;
+    checkChangePassword: (idUser: any, oldPassword: any, newPassword: any) => Promise<{
+        check: boolean;
+        userFind: any[];
+    }>;
 }
 declare const _default: UserService;
 export default _default;

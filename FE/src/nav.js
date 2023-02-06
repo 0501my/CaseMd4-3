@@ -23,7 +23,7 @@ function showNav() {
             <a class="nav-link dropdown-toggle" href="/user" id="dropdownId" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">User</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="/user/edit-info">Edit Info</a>
+                <a class="dropdown-item" onclick="showOrderDetail()">List Rent</a>
                 <a class="dropdown-item" href="/user/change-password">Change Password</a>
                 <div class="dropdown-item" onclick="logout()">Log out</a>
             </div>
@@ -54,8 +54,8 @@ function showNav() {
             <a class="nav-link dropdown-toggle" href="/user" id="dropdownId" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">User</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="/user/edit-info">Edit Info</a>
-                <a class="dropdown-item" href="/user/change-password">Change Password</a>
+                <a class="dropdown-item" onclick="showHistoryRent()">History Rent</a>
+                <a class="dropdown-item" onclick="showFormChangePassword()">Change Password</a>
                 <div class="dropdown-item" onclick="logout()">Log out</a>
             </div>
         </li>

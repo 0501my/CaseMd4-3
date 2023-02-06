@@ -10,6 +10,7 @@ class OrderDetailServices {
                           o.status,
                           startTime,
                           endTime,
+                          u.id as 'idnguoithue',
                           u.username as 'nguoithue',ch.chunha,
                           name,
                           image,

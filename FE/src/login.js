@@ -43,8 +43,10 @@ function Login(){
                 },
                 data: JSON.stringify(user),
                 success: (token) => {
-                    if(token === "Username is not exit"){
-                        alert("bạn cần nhập đúng tài khoản hoặc mật khẩu")
+                    if(token === "Username is not exit") {
+                        alert("bạn cần nhập đúng tài khoản ")
+                    }else if(token === "Password is wrong"){
+                        alert("bạn cần nhập đúng mật khẩu")
                     }else {
                         localStorage.setItem('token',JSON.stringify(token))
                         showHome();
