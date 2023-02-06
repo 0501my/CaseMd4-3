@@ -1,5 +1,5 @@
 function HomeShow() {
-        $('#body').html(`<table class="table ">
+    $('#body').html(`<table class="table ">
             <tr>
                 <th>Home ID</th>
                 <th>Name</th>
@@ -13,22 +13,22 @@ function HomeShow() {
         </table>
      
 </table>`)
-        ListHome()
+    ListHome()
 }
 
+
 function ListHome() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/home',
+        headers: {
+            'Content-Type': 'application/json',
 
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:3000/home',
-            headers: {
-                'Content-Type': 'application/json',
-
-            },
-            success: (home) => {
-                let html = ''
-                home.map((item,index) => {
-                    html += `<tr>
+        },
+        success: (home) => {
+            let html = ''
+            home.map((item, index) => {
+                html += `<tr>
     <td>${index + 1}</td>
     <td>${item.name}</td>
      <td><img src="${item.image}" style="height: 150px; width: 150px"></td>
@@ -37,15 +37,16 @@ function ListHome() {
     <td>${item.nameCategory}</td>
     <td><button onclick="Thue()">Thuê</button></td>
 </tr>`
-                })
-                $('#tbody').html(html)
+            })
+            $('#tbody').html(html)
 
-            }
-            })}
+        }
+    })
+}
 
-function Thue(){
+function Thue() {
 
-    if(confirm("Bạn phải đăng nhập vào để thuê")){
+    if (confirm("Bạn phải đăng nhập vào để thuê")) {
         showFormLogin()
     }
 }

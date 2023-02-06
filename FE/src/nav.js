@@ -21,7 +21,7 @@ function showNav() {
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/user" id="dropdownId" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">User</a>
+               aria-haspopup="true" aria-expanded="false">user</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
                 <a class="dropdown-item" onclick="showOrderDetail()">List Rent</a>
                 <a class="dropdown-item" onclick="showFormChangePassword(${token.idUser})">Change Password</a>
