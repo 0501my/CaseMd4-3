@@ -28,6 +28,11 @@ class OrderDetailController {
                 });
             }
         };
+        this.remove = async (req, res) => {
+            let id = req.params.id;
+            await this.orderDetailService.remove(id);
+            res.status(200).json('Success!');
+        };
         this.orderDetailService = orderDetailService_1.default;
     }
 }

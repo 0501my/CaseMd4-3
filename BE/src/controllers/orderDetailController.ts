@@ -30,5 +30,11 @@ import orderServices from "../services/orderServices";
               )
           }
       }
+      remove = async (req: Request, res: Response) => {
+          let id = req.params.id;
+          await this.orderDetailService.remove(id);
+          res.status(200).json('Success!')
+
+      }
 }
 export default new OrderDetailController
