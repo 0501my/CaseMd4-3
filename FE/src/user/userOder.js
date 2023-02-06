@@ -3,12 +3,11 @@ function showFormHire(id, price) {
 <div class="form-group">
  <div class="form-group">
     <label for="date">Sart Time:</label>
-    <input type="date" class="form-control" id="endTime" required>
+    <input type="date" class="form-control" id="startTime" required>
   </div>
- 
   <div class="form-group">
     <label for="date">End Time:</label>
-    <input type="date" class="form-control" id="startTime" required>
+    <input type="date" class="form-control" id="endTime" required>
   </div>
   <button type="submit" class="btn btn-primary" onclick="hire('${id}','${price}')">Thuê</button>
 `)
