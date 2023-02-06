@@ -1,1 +1,1 @@
-export declare const orderDetailRouter: any;
+export declare const orderDetailRouter: import("express-serve-static-core").Router;
