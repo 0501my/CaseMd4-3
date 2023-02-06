@@ -16,7 +16,7 @@ function hire(id, price) {
         let endTime = $('#endTime').val();
         let date1 = new Date(startTime);
         let date2 = new Date(endTime);
-        console.log(startTime,endTime,price)
+        console.log(startTime, endTime, price)
         let Difference_In_Time = date2.getTime() - date1.getTime();
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         let totalPrice = Difference_In_Days * price;
@@ -127,10 +127,10 @@ function orderList() {
 
                     })
                     $('#tbody').html(html)
-                }else {
+                } else {
                     let html = ''
                     home.map(item => {
-                        if(token.idUser === item.idnguoithue) {
+                        if (token.idUser === item.idnguoithue) {
 
                             html += `<tr>
     <td>${item.id}</td>
@@ -154,7 +154,8 @@ function orderList() {
         })
     }
 }
-function showHistoryRent(){
+
+function showHistoryRent() {
     let token = localStorage.getItem('token');
     if (token) {
         $('#body').html(`<table class="table ">
@@ -178,29 +179,95 @@ function showHistoryRent(){
         showFormLogin()
     }
 }
-function showFormChangePassword(idUser){
+
+function showFormChangePassword(id) {
     let token = localStorage.getItem('token');
-    console.log(token)
     if (token) {
-        token = JSON.parse(token)
-        $.ajax({
-            type: 'POST',
-            url: `http://localhost:3000/changepassword/${idUser}`,
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token.token
-            },
-            success: () => {
-                $('#body').html(`
-                <input placeholder="oldPassword" id="oldPassword">
-                <input placeholder="newPassword" id="newPassword">
-                <input placeholder="Password" id="Password">
+        $('#body').html(`
+                <div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h1>Change Password</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<p class="text-center"></p>
+<div>
+<input type="password" class="input-lg form-control" name="password1" id="oldPassword" placeholder="Old Password" autocomplete="off">
+<div class="row">
+<div class="col-sm-6">
+<span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span><br>
+<span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+</div>
+<div class="col-sm-6">
+<span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> <br>
+<span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+</div>
+</div>
+<input type="password" class="input-lg form-control" name="password1" id="newPassword" placeholder="New Password" autocomplete="off">
+<div class="row">
+<div class="col-sm-6">
+<span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span><br>
+<span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+</div>
+<div class="col-sm-6">
+<span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> <br>
+<span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+</div>
+</div>
+<input type="password" class="input-lg form-control" name="password2" id="rePassword" placeholder="Repeat Password" autocomplete="off">
+<div class="row">
+<div class="col-sm-12">
+<span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+</div>
+</div>
+<div>
+<span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> <br>
+<span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>
+<input type="submit" onclick="changePassword('${id}')" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Changing Password..." value="Change Password">
+</div>
+
+</div>
+</div><!--/col-sm-6-->
+</div><!--/row-->
+</div>
                 `)
-            }
-        })
-        changePassword()
     }
 }
-function changePassword(){
 
+function changePassword(id) {
+    let token = localStorage.getItem('token');
+    if (token) {
+        token = JSON.parse(token);
+        let oldPassword = $('#oldPassword').val();
+        let newPassword = $('#newPassword').val();
+        let rePassword = $('#rePassword').val();
+        if (rePassword!== newPassword) {
+            alert('sai cmnr!!!')
+        } else {let newPass = {
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+            rePassword : rePassword
+        }
+            $.ajax({
+                type: 'POST',
+                url: `http://localhost:3000/auth/changepassword/${id}`,
+                data: JSON.stringify(newPass),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token.token
+                },
+                success: (data) => {
+                    if (data.user.check) {
+                        alert("thay đổi mật khẩu thành công")
+                        showHome()
+                    } else {
+                        alert('sai mật khẩu cũ')
+                    }
+
+                }
+            })}
+
+    }
 }

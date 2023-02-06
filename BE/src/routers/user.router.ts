@@ -6,5 +6,5 @@ export const userRouter = Router();
 
 userRouter.post('/login' , userController.login);
 userRouter.post('/signup' , userController.register);
-userRouter.post('/changepassword', userController.changePassword)
+userRouter.post('/changepassword/:id', userController.changePassword)
 

@@ -9,5 +9,5 @@ const userController_1 = __importDefault(require("../controllers/userController"
 exports.userRouter = (0, express_1.Router)();
 exports.userRouter.post('/login', userController_1.default.login);
 exports.userRouter.post('/signup', userController_1.default.register);
-exports.userRouter.post('/changepassword', userController_1.default.changePassword);
+exports.userRouter.post('/changepassword/:id', userController_1.default.changePassword);
 //# sourceMappingURL=user.router.js.map

@@ -24,7 +24,7 @@ function showNav() {
                aria-haspopup="true" aria-expanded="false">User</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
                 <a class="dropdown-item" onclick="showOrderDetail()">List Rent</a>
-                <a class="dropdown-item" href="/user/change-password">Change Password</a>
+                <a class="dropdown-item" onclick="showFormChangePassword(${token.idUser})">Change Password</a>
                 <div class="dropdown-item" onclick="logout()">Log out</a>
             </div>
         </li>
@@ -55,7 +55,7 @@ function showNav() {
                aria-haspopup="true" aria-expanded="false">User</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
                 <a class="dropdown-item" onclick="showHistoryRent()">History Rent</a>
-                <a class="dropdown-item" onclick="showFormChangePassword()">Change Password</a>
+                <a class="dropdown-item" onclick="showFormChangePassword(${token.idUser})">Change Password</a>
                 <div class="dropdown-item" onclick="logout()">Log out</a>
             </div>
         </li>

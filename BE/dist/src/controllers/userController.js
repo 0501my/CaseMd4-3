@@ -32,7 +32,7 @@ class ProductController {
             }
             catch (e) {
                 res.json({
-                    mess: e.message
+                    mess: e.message,
                 });
             }
         };
