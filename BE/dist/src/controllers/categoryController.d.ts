@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 declare class CategoryController {
     private categoryServices;
     constructor();

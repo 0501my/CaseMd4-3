@@ -1,1 +1,1 @@
-export declare const categoryRouter: any;
+export declare const categoryRouter: import("express-serve-static-core").Router;
