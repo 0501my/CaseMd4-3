@@ -85,7 +85,7 @@ function showNav() {
         <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHomeUser(this.value)"> </div>
 </li>
     </ul>
-        <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHome(this.value)"> </div>
+        <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHomeUser(this.value)"> </div>
 </div>
 </nav>
     `)
