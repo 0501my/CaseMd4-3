@@ -81,9 +81,11 @@ function showNav() {
         <li class="nav-item active">
             <div class="nav-link" onclick="showFormLogin()">Login <span class="sr-only">(current)</span></a>
         </li>
-        
-    </ul>
+        <li class="nav-item">
         <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHomeUser(this.value)"> </div>
+</li>
+    </ul>
+        <div class="nav-link"> <input  type="search" id="search" placeholder="Enter search name" onkeyup="searchHome(this.value)"> </div>
 </div>
 </nav>
     `)
