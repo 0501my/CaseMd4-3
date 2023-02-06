@@ -1,6 +1,7 @@
 function showFormSignup() {
     $('#body').html(`
-    <div  class="mb-6" style="width: 300px; height: 80px; text-align: center">
+<div style="width: 100%; margin-left: 600px">
+  <div  class="mb-6" style="width: 300px; height: 80px; text-align: center">
         <label class="form-label">User Name</label>
         <input type="text" class="form-control" name="username" id="username">
     </div>
@@ -9,7 +10,8 @@ function showFormSignup() {
         <input type="password" class="form-control" name="password" id="password">
     </div>
         <button type="submit" onclick="signUp()" class="btn btn-primary">Sign Up</button>
-
+</div>
+  
 `)
 }
 function signUp(){
@@ -28,6 +30,7 @@ function signUp(){
         },
         data: JSON.stringify(user),
         success: () => {
+
             showFormLogin()
         }
     })

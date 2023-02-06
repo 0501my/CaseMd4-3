@@ -12,38 +12,90 @@ function hire(id, price) {
         let idHome = id;
         let idUser = token.idUser;
         let status = "paid";
-        let startTime = $('#startTime').val()
+        let startTime = $('#startTime').val();
         let endTime = $('#endTime').val();
         let date1 = new Date(startTime);
         let date2 = new Date(endTime);
-        console.log(startTime,endTime,price)
         let Difference_In_Time = date2.getTime() - date1.getTime();
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-        let totalPrice = Difference_In_Days * price;
-        let order = {
-            idHome: idHome,
-            idUser: idUser,
-            totalPrice: totalPrice,
-            status: status,
-            startTime: startTime,
-            endTime: endTime
+        if (Difference_In_Days < 0) {
+            alert('Nhập ngu vl')
+            showHome()
+        } else {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3000/orderDetail',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token.token
+                },
+                success: (orderDetail) => {
+                    if (orderDetail.length === 0 ) {
+                        let totalPrice = Difference_In_Days * price;
+                        let order = {
+                            idHome: idHome,
+                            idUser: idUser,
+                            totalPrice: totalPrice,
+                            status: status,
+                            startTime: startTime,
+                            endTime: endTime
+                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:3000/order',
+                            data: JSON.stringify(order),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: 'Bearer ' + token.token
+                            },
+                            success: (order) => {
+                                showHome()
+                                addOderDetail(order.id, order.idHome)
+
+                            }
+                        })
+                    } else {
+
+                        for (let i = 0; i < orderDetail.length; i++) {
+                            let start = new Date(orderDetail[i].startTime);
+                            let end = new Date(orderDetail[i].endTime);
+                            if (orderDetail[i].idHome == id && ((date2.getTime() >= start.getTime()&&date2.getTime() <= end.getTime()) || (date1.getTime() >= start.getTime() && date1.getTime() <= end.getTime()))) {
+                                alert(`da co nguoi thue tu ngay ${start} den ngay ${end}`)
+                                showHome()
+                                break;
+                            } else {
+                                let totalPrice = Difference_In_Days * price;
+                                let order = {
+                                    idHome: idHome,
+                                    idUser: idUser,
+                                    totalPrice: totalPrice,
+                                    status: status,
+                                    startTime: startTime,
+                                    endTime: endTime
+                                }
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'http://localhost:3000/order',
+                                    data: JSON.stringify(order),
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        Authorization: 'Bearer ' + token.token
+                                    },
+                                    success: (order) => {
+                                        showHome()
+
+                                        addOderDetail(order.id, order.idHome)
+
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            })
+
         }
-        console.log(order)
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:3000/order',
-            data: JSON.stringify(order),
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token.token
-            },
-            success: (order) => {
-                showHome()
 
-                addOderDetail(order.id, order.idHome)
-
-            }
-        })
     }
 
 }
@@ -127,10 +179,10 @@ function orderList() {
 
                     })
                     $('#tbody').html(html)
-                }else {
+                } else {
                     let html = ''
                     home.map(item => {
-                        if(token.idUser === item.idnguoithue) {
+                        if (token.idUser === item.idnguoithue) {
 
                             html += `<tr>
     <td>${item.id}</td>
@@ -154,7 +206,8 @@ function orderList() {
         })
     }
 }
-function showHistoryRent(){
+
+function showHistoryRent() {
     let token = localStorage.getItem('token');
     if (token) {
         $('#body').html(`<table class="table ">
@@ -178,9 +231,9 @@ function showHistoryRent(){
         showFormLogin()
     }
 }
-function showFormChangePassword(idUser){
+
+function showFormChangePassword(idUser) {
     let token = localStorage.getItem('token');
-    console.log(token)
     if (token) {
         token = JSON.parse(token)
         $.ajax({
@@ -201,6 +254,7 @@ function showFormChangePassword(idUser){
         changePassword()
     }
 }
-function changePassword(){
+
+function changePassword() {
 
 }

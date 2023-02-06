@@ -53,7 +53,6 @@ function showList() {
                 } else {
                     let html = ''
                     home.map((item, index) => {
-                        console.log(item)
                         if (token.idUser !== item.idUser) {
                             html += `<tr>
    <td>${index + 1}</td>

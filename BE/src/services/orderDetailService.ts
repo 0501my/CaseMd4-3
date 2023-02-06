@@ -14,8 +14,8 @@ class OrderDetailServices {
                           o.status,
                           startTime,
                           endTime,
-                          u.id as 'idnguoithue',
-                          u.username as 'nguoithue',ch.chunha,
+                          ch.id as idHome,
+                          u.id as 'idnguoithue', u.username as 'nguoithue',ch.chunha,
                           name,
                           image,
                           price
