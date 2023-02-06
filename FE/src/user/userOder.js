@@ -1,8 +1,17 @@
 function showFormHire(id, price) {
     $('#body').html(`
-<input type="date" placeholder="startTime" id="startTime">
-<input type="date" placeholder="endTime" id="endTime">
-<button type="submit" onclick="hire('${id}','${price}')">Add</button>`)
+<div class="form-group">
+ <div class="form-group">
+    <label for="date">Sart Time:</label>
+    <input type="date" class="form-control" id="endTime" required>
+  </div>
+ 
+  <div class="form-group">
+    <label for="date">End Time:</label>
+    <input type="date" class="form-control" id="startTime" required>
+  </div>
+  <button type="submit" class="btn btn-primary" onclick="hire('${id}','${price}')">Thuê</button>
+`)
 }
 
 function hire(id, price) {
@@ -265,7 +274,6 @@ function changePassword(id) {
                     } else {
                         alert('sai mật khẩu cũ')
                     }
-
                 }
             })}
 
