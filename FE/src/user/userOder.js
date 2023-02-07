@@ -28,6 +28,7 @@ function hire(id, price) {
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         if (Difference_In_Days < 0) {
             alert('Nhập ngu vl')
+            showHome()
         } else {
             $.ajax({
                 type: 'GET',
@@ -37,7 +38,7 @@ function hire(id, price) {
                     Authorization: 'Bearer ' + token.token
                 },
                 success: (orderDetail) => {
-                    if (orderDetail.length === 0 ) {
+                    if (orderDetail.length === 0) {
                         let totalPrice = Difference_In_Days * price;
                         let order = {
                             idHome: idHome,
@@ -62,39 +63,43 @@ function hire(id, price) {
                             }
                         })
                     } else {
-
+                        let flag = true
                         for (let i = 0; i < orderDetail.length; i++) {
+                            flag = true
                             let start = new Date(orderDetail[i].startTime);
                             let end = new Date(orderDetail[i].endTime);
-                            if (orderDetail[i].idHome == id && ((date2.getTime() >= start.getTime()&&date2.getTime() <= end.getTime()) || (date1.getTime() >= start.getTime() && date1.getTime() <= end.getTime()))) {
-                                alert(`da co nguoi thue tu ngay ${start} den ngay ${end}`)
+                            if (orderDetail[i].idHome == id && ((date2.getTime() >= start.getTime() && date2.getTime() <=
+                                end.getTime()) || (date1.getTime() >= start.getTime() && date1.getTime() <= end.getTime()))) {
+                                flag = false;
+                                alert(`đã có người thuê từ ngày ${start} đến ngày ${end}`)
+                                showHome()
                                 break;
-                            } else {
-                                let totalPrice = Difference_In_Days * price;
-                                let order = {
-                                    idHome: idHome,
-                                    idUser: idUser,
-                                    totalPrice: totalPrice,
-                                    status: status,
-                                    startTime: startTime,
-                                    endTime: endTime
-                                }
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'http://localhost:3000/order',
-                                    data: JSON.stringify(order),
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        Authorization: 'Bearer ' + token.token
-                                    },
-                                    success: (order) => {
-                                        showHome()
-
-                                        addOderDetail(order.id, order.idHome)
-
-                                    }
-                                })
                             }
+                        }
+                        if (flag === true) {
+                            let totalPrice = Difference_In_Days * price;
+                            let order = {
+                                idHome: idHome,
+                                idUser: idUser,
+                                totalPrice: totalPrice,
+                                status: status,
+                                startTime: startTime,
+                                endTime: endTime
+                            }
+                            $.ajax({
+                                type: 'POST',
+                                url: 'http://localhost:3000/order',
+                                data: JSON.stringify(order),
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    Authorization: 'Bearer ' + token.token
+                                },
+                                success: (order) => {
+                                    showHome()
+                                    addOderDetail(order.id, order.idHome)
+
+                                }
+                            })
                         }
                     }
                 }
@@ -199,7 +204,7 @@ function orderList() {
     <td>${item.endTime}</td>
     <td>${item.nguoithue}</td>
     <td>${item.chunha}</td>
-    <td><button onclick="">Trả phòng</button></td>
+    <td><button onclick="removeOrder('${item.id}','${item.startTime}')">Huỷ Order</button></td>
 </tr>`
                         }
 
@@ -301,13 +306,14 @@ function changePassword(id) {
         let oldPassword = $('#oldPassword').val();
         let newPassword = $('#newPassword').val();
         let rePassword = $('#rePassword').val();
-        if (rePassword!== newPassword) {
+        if (rePassword !== newPassword) {
             alert('sai cmnr!!!')
-        } else {let newPass = {
-            oldPassword: oldPassword,
-            newPassword: newPassword,
-            rePassword : rePassword
-        }
+        } else {
+            let newPass = {
+                oldPassword: oldPassword,
+                newPassword: newPassword,
+                rePassword: rePassword
+            }
             $.ajax({
                 type: 'POST',
                 url: `http://localhost:3000/auth/changepassword/${id}`,
@@ -324,7 +330,37 @@ function changePassword(id) {
                         alert('sai mật khẩu cũ')
                     }
                 }
-            })}
+            })
+        }
 
+    }
+}
+
+function removeOrder(id, start1) {
+    if (confirm('Bạn có chắc chắn muốn huỷ order này')) {
+        let today = new Date();
+        let date2 = new Date(start1);
+        let Difference_In_Time = date2.getDay() - today.getDay();
+        if (Difference_In_Time < 1) {
+            alert("bạn không thể huỷ trước 1 ngày")
+        } else {
+            alert(1)
+            let token = localStorage.getItem('token');
+            if (token) {
+                token = JSON.parse(token)
+                $.ajax({
+                    type: 'DELETE',
+                    url: `http://localhost:3000/orderDetail/${id}`,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Bearer ' + token.token
+                    },
+                    success: () => {
+                        showHome()
+                    }
+                })
+            }
+
+        }
     }
 }
