@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 declare class OrderDetailController {
     private orderDetailService;
     constructor();

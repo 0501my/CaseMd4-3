@@ -340,11 +340,12 @@ function removeOrder(id, start1) {
     if (confirm('Bạn có chắc chắn muốn huỷ order này')) {
         let today = new Date();
         let date2 = new Date(start1);
-        let Difference_In_Time = date2.getDay() - today.getDay();
+        console.log(date2.getDay(),   today.getDay())
+        let Difference_In_Time = date2 - today;
+        console.log(Difference_In_Time)
         if (Difference_In_Time < 1) {
             alert("bạn không thể huỷ trước 1 ngày")
         } else {
-            alert(1)
             let token = localStorage.getItem('token');
             if (token) {
                 token = JSON.parse(token)
