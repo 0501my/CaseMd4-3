@@ -6,7 +6,7 @@ declare class UserService {
         idUser: any;
         username: any;
         role: any;
-        token: string;
+        token: any;
     }>;
     register: (user: any) => Promise<any>;
     checkChangePassword: (idUser: any, oldPassword: any, newPassword: any) => Promise<{

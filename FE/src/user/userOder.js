@@ -28,7 +28,6 @@ function hire(id, price) {
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         if (Difference_In_Days < 0) {
             alert('Nhập ngu vl')
-            showHome()
         } else {
             $.ajax({
                 type: 'GET',
@@ -69,7 +68,6 @@ function hire(id, price) {
                             let end = new Date(orderDetail[i].endTime);
                             if (orderDetail[i].idHome == id && ((date2.getTime() >= start.getTime()&&date2.getTime() <= end.getTime()) || (date1.getTime() >= start.getTime() && date1.getTime() <= end.getTime()))) {
                                 alert(`da co nguoi thue tu ngay ${start} den ngay ${end}`)
-                                showHome()
                                 break;
                             } else {
                                 let totalPrice = Difference_In_Days * price;

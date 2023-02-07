@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 declare class ProductController {
     private userService;
     private orderService;
