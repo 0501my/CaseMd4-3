@@ -27,7 +27,7 @@ function hire(id, price) {
         let Difference_In_Time = date2.getTime() - date1.getTime();
         let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         if (Difference_In_Days < 0) {
-            alert('Nhập ngu vl')
+            alert('Bạn không thể chọn như vậy...Mời bạn chọn lại')
             showHome()
         } else {
             $.ajax({
@@ -185,7 +185,7 @@ function orderList() {
     <td>${item.endTime}</td>
     <td>${item.nguoithue}</td>
     <td>${item.chunha}</td>
-    <td><button onclick="">Xóa</button></td>
+    <td><button onclick="removeOrderAdmin(${item.id})">Xóa</button></td>
 </tr>`
 
                     })
@@ -307,7 +307,7 @@ function changePassword(id) {
         let newPassword = $('#newPassword').val();
         let rePassword = $('#rePassword').val();
         if (rePassword !== newPassword) {
-            alert('sai cmnr!!!')
+            alert('sai rồi bạn êi!!!')
         } else {
             let newPass = {
                 oldPassword: oldPassword,
@@ -346,6 +346,7 @@ function removeOrder(id, start1) {
         if (Difference_In_Time < 1) {
             alert("bạn không thể huỷ trước 1 ngày")
         } else {
+            alert("bạn đã hủy order thành công")
             let token = localStorage.getItem('token');
             if (token) {
                 token = JSON.parse(token)
@@ -365,3 +366,4 @@ function removeOrder(id, start1) {
         }
     }
 }
+
