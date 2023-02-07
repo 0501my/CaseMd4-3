@@ -9,4 +9,5 @@ const orderDetailController_1 = __importDefault(require("../controllers/orderDet
 exports.orderDetailRouter = (0, express_1.Router)();
 exports.orderDetailRouter.get('/', orderDetailController_1.default.getAll);
 exports.orderDetailRouter.post('/', orderDetailController_1.default.create);
+exports.orderDetailRouter.delete('/:id', orderDetailController_1.default.remove);
 //# sourceMappingURL=orderDetail.router.js.map
